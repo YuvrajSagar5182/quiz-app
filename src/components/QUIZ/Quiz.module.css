@@ -1,0 +1,20 @@
+.heading {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 40rem;
+}
+
+.heading span {
+    background: #c0665a;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
