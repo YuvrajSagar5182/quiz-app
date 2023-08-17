@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import Card from "../UI/Card";
 import classes from "./Question.module.css";
@@ -52,10 +51,13 @@ const Question = (props) => {
           {decodeEntities(props.title)}
         </h2>
 
-        <section className={classes["optionList"]}>
+        <section
+          className={`${classes["optionList"]} ${
+            optionsClicked ? classes.optionDisabled : ""
+          }`}>
           {shuffledOptions.map((opt, index) => (
             <label
-              className={`${classes["option"]} ${
+              className={`${classes["option"]}  ${
                 optionsClicked
                   ? opt === props.correctOption
                     ? classForCorrectAnswer
@@ -68,10 +70,11 @@ const Question = (props) => {
               htmlFor={`option-${index}`}>
               <input
                 type="radio"
+                checked={optionsClicked === opt}
                 id={`option-${index}`}
                 name="options"
                 value={opt}
-                onClick={() => attemptHandler(opt)}
+                onChange={() => attemptHandler(opt)}
               />
               {decodeEntities(opt)}
             </label>

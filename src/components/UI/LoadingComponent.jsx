@@ -1,5 +1,6 @@
 import React from "react";
-import { Oval } from "react-loader-spinner";
+import { ThreeDots } from "react-loader-spinner";
+
 const LoadingComponent = () => {
   return (
     <div
@@ -10,10 +11,7 @@ const LoadingComponent = () => {
         fontSize: "bold",
         zIndex: 1,
       }}>
-      <Oval color="#00BFFF" height={40} width={40} />
-      <p style={{ marginLeft: "10px", color: "red", fontSize: "bold" }}>
-        Fetching Questions...
-      </p>
+      <ThreeDots color="#0086b3" height={50} width={50} />
     </div>
   );
 };

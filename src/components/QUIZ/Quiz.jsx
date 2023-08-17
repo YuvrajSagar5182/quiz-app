@@ -13,15 +13,24 @@ const Quiz = (props) => {
   const [optionsClicked, setOptionsClicked] = useState(false);
   const [isloading, setIsLoading] = useState(false);
 
+  const { category } = props;
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(
-          `https://opentdb.com/api.php?amount=10&category=12`
-        );
+        let response;
+        if (category !== "random") {
+          response = await fetch(
+            `https://opentdb.com/api.php?amount=10&category=${category}&type=multiple`
+          );
+        } else {
+          response = await fetch(
+            `https://opentdb.com/api.php?amount=10&type=multiple`
+          );
+        }
         const data = await response.json(); // Use await here to get the JSON data
-        // console.log(data.results, typeof data.results);
+        // console.log(data.results);
         const qstns = data.results;
         let loadedQuestions = [];
         for (let i in qstns) {
@@ -39,7 +48,7 @@ const Quiz = (props) => {
       }
     };
     fetchData();
-  }, []);
+  }, [category]);
 
   const questionHandler = () => {
     if (currentQuestion <= questionList.length) {
